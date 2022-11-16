@@ -11,18 +11,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fun silnia(x: Int, y: Int): Int
-        {
-            var x_ = x
-            var y_ = y
-
-            if (y_ != x_) {
-                x_ = x_ * (x_ + 1)
-                y_++
-                silnia(x_, y_)
-
+        fun silnia(x: Int) : Int {
+            if (x >= 1)
+            {
+                return x * silnia(x - 1)
             }
-            return x_
+
+            return 1
         }
 
 
@@ -74,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         findViewById<Button>(R.id.buttonlsilnia).setOnClickListener {
-            findViewById<TextView>(R.id.wynik).text = silnia(liczba, liczba).toString()
+            findViewById<TextView>(R.id.wynik).text = silnia(liczba).toString()
         }
     }
 }
